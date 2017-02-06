@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXButton?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="233.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="body.DrawerContentController">
+    <children>
+        <VBox maxHeight="-Infinity" prefHeight="168.0" prefWidth="212.0" styleClass="dark-primary-color" stylesheets="@../main/mainStyle.css">
+            <children>
+                <HBox maxHeight="-Infinity" prefHeight="96.0" prefWidth="212.0" styleClass="dark-primary-color" stylesheets="@../main/mainStyle.css">
+                    <children>
+                        <ImageView fx:id="profilePic" fitHeight="84.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/avatar.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="10.0" top="30.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="bold-label" text="Zacker" textFill="WHITE" wrapText="true">
+                            <HBox.margin>
+                                <Insets left="8.0" top="50.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" styleClass="rect-button-raised" text="LOGOUT">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="70.0" top="10.0" />
+                    </VBox.margin>
+                </JFXButton>
+            </children>
+        </VBox>
+        <JFXListView stylesheets="@../main/mainStyle.css">
+            <Label>Total Score: 500</Label>
+            <JFXListView fx:id="solvedList" styleClass="sublist">
+                <groupnode>
+                    <Label styleClass="sub-label"> Questions Solved: 5 </Label>
+                </groupnode>
+                <Label> Easy: 3 </Label>
+                <Label> Medium: 2 </Label>
+                <Label> Hard: 1 </Label>
+            </JFXListView>
+            <JFXListView fx:id="forfeitedList" styleClass="sublist">
+                <groupnode>
+                    <Label styleClass="sub-label"> Questions Forfeited: 3 </Label>
+                </groupnode>
+                <Label> Easy: 0 </Label>
+                <Label> Medium: 1 </Label>
+                <Label> Hard: 2 </Label>
+            </JFXListView>
+        </JFXListView>
+    </children>
+</VBox>

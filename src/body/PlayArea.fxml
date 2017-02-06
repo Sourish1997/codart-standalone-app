@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="playArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="body.PlayAreaController">
+   <left>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="233.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" overLayVisible="false" prefHeight="560.0" stylesheets="@../main/mainStyle.css" BorderPane.alignment="CENTER">
+      </JFXDrawer>
+   </left>
+
+   <top>
+      <JFXToolbar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../main/mainStyle.css" BorderPane.alignment="CENTER">
+         <left>
+             <JFXHamburger fx:id="playBurger" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#toggleDrawer" prefHeight="30.0" prefWidth="78.0" styleClass="white-hamburger" />
+         </left>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </JFXToolbar>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <center>
+           <VBox prefHeight="560.0" prefWidth="498.0" BorderPane.alignment="CENTER">
+               <JFXListView fx:id="questionsList" layoutX="300" layoutY="50" maxWidth="1.7976931348623157E308" styleClass="custom-jfx-list-view" stylesheets="@../main/mainStyle.css">
+                   <Label text="question 1: Churu and Strings" styleClass="large-label"/>
+                   <Label text="question 2: Chef in the Garden" styleClass="large-label"/>
+                   <VBox.margin>
+                       <Insets left="10.0" right="10.0" top="20.0" />
+                   </VBox.margin>
+               </JFXListView>
+               <BorderPane.margin>
+                   <Insets />
+               </BorderPane.margin>
+           </VBox>
+        </center>
+      </BorderPane>
+   </center>
+</BorderPane>
