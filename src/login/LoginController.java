@@ -38,7 +38,7 @@ public class LoginController implements Initializable{
     //private Main main;
 
     @FXML
-    void registerButtonClicked(ActionEvent event) throws IOException {
+    void registerButtonClicked(ActionEvent event) throws Exception {
         String userAndPass;
         String authArray[];
         BufferedReader reader = new BufferedReader(new FileReader("data/auth.codart"));
@@ -46,7 +46,7 @@ public class LoginController implements Initializable{
             authArray = userAndPass.split(" ");
             if(authArray[0].equals(loginUsername.getText()) && authArray[1].equals(loginPassword.getText())) {
                 reader.close();
-                File userData = new File("data/" + loginUsername + ".codart");
+                File userData = new File("data/" + loginUsername.getText() + ".codart");
                 if(userData.exists()) {
                     reader = new BufferedReader(new FileReader("data/" + loginUsername.getText() + ".codart"));
                     String username = reader.readLine();
@@ -60,11 +60,11 @@ public class LoginController implements Initializable{
                     while((questionItem = reader.readLine()) != null)
                         questionsInfo.add(questionItem);
                     reader.close();
-                    String questionsInfoArray[] = (String[]) questionsInfo.toArray();
+                    String questionsInfoArray[] =  questionsInfo.toArray(new String[questionsInfo.size()]);
                     Main.loadTabs(username, userScoreInfo, questionsInfoArray);
                 } else {
                     BufferedWriter writer = new BufferedWriter(new FileWriter("data/" + loginUsername.getText() + ".codart"));
-                    writer.write(loginUsername.getText() + "\n");
+                    writer.write(loginUsername.getText());
                     writer.newLine();
                     for(int i = 0; i < 9; i++) {
                         writer.write("0");

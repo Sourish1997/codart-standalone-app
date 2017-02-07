@@ -25,12 +25,19 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void loadTabs(String username, int[] userData, String[] questionData) throws IOException {
+    public static void loadTabs(String username, int[] userData, String[] questionData) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/body/Tabs.fxml"));
         Parent root = loader.load();
         TabsController controller = loader.<TabsController>getController();
         controller.initVariables(username, userData, questionData);
+        pStage.setScene(new Scene(root, 700, 650));
+    }
+
+    public static void loadLogin() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("/login/Login.fxml"));
+        Parent root = loader.load();
         pStage.setScene(new Scene(root, 700, 650));
     }
 }

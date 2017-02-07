@@ -24,7 +24,7 @@ public class TabsController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
 
-    public void initVariables(String username, int[] userData, String[] questionData) {
+    public void initVariables(String username, int[] userData, String[] questionData) throws Exception {
         playAreaController.initVariables(username, userData, questionData);
     }
 }
