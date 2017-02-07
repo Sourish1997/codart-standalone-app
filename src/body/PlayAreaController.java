@@ -11,6 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
+import javax.xml.soap.SOAPPart;
+import java.io.IOException;
+import java.net.SocketPermission;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,14 +32,16 @@ public class PlayAreaController implements Initializable{
 
     HamburgerSlideCloseTransition transition;
 
+    FXMLLoader loader;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            VBox drawerContent = FXMLLoader.load(getClass().getResource("DrawerContent.fxml"));
+            loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("DrawerContent.fxml"));
+            VBox drawerContent = loader.load();
             drawer.setSidePane(drawerContent);
-        } catch (Exception e) {
-            System.out.println("Hello");
-        }
+        } catch (Exception e) {}
 
         transition = new HamburgerSlideCloseTransition(playBurger);
         transition.setRate(-1);
@@ -60,5 +65,10 @@ public class PlayAreaController implements Initializable{
             drawer.open();
         else
             drawer.close();
+    }
+
+    public void initVariables(String username, int[] userData, String[] questionData) {
+        DrawerContentController controller = loader.<DrawerContentController>getController();
+        controller.initVariables(username, userData);
     }
 }

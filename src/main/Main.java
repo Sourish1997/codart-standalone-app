@@ -1,5 +1,6 @@
 package main;
 
+import body.TabsController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +25,12 @@ public class Main extends Application {
         launch(args);
     }
 
-    public static void loadTabs() throws IOException {
+    public static void loadTabs(String username, int[] userData, String[] questionData) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/body/Tabs.fxml"));
         Parent root = loader.load();
+        TabsController controller = loader.<TabsController>getController();
+        controller.initVariables(username, userData, questionData);
         pStage.setScene(new Scene(root, 700, 650));
     }
 }

@@ -14,32 +14,73 @@ import main.Main;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable{
     @FXML
-    ImageView login_logo;
+    ImageView loginLogo;
 
     @FXML
     private VBox loginPanel;
 
     @FXML
-    private JFXButton login_register_button;
+    private JFXButton loginRegisterButton;
 
     @FXML
-    private JFXPasswordField login_password;
+    private JFXPasswordField loginPassword;
 
     @FXML
-    private JFXTextField login_username;
+    private JFXTextField loginUsername;
 
-    private Main main;
+    //private Main main;
 
     @FXML
     void registerButtonClicked(ActionEvent event) throws IOException {
-        main.loadTabs();
+        String userAndPass;
+        String authArray[];
+        BufferedReader reader = new BufferedReader(new FileReader("data/auth.codart"));
+        while ((userAndPass = reader.readLine()) != null) {
+            authArray = userAndPass.split(" ");
+            if(authArray[0].equals(loginUsername.getText()) && authArray[1].equals(loginPassword.getText())) {
+                reader.close();
+                File userData = new File("data/" + loginUsername + ".codart");
+                if(userData.exists()) {
+                    reader = new BufferedReader(new FileReader("data/" + loginUsername.getText() + ".codart"));
+                    String username = reader.readLine();
+                    int[] userScoreInfo = new int[9];
+                    for(int i = 0; i < 9; i++)
+                        userScoreInfo[i] = Integer.parseInt(reader.readLine());
+                    reader.close();
+                    reader = new BufferedReader(new FileReader("data/" + loginUsername.getText() + "_questions.codart"));
+                    ArrayList<String> questionsInfo = new ArrayList<>();
+                    String questionItem;
+                    while((questionItem = reader.readLine()) != null)
+                        questionsInfo.add(questionItem);
+                    reader.close();
+                    String questionsInfoArray[] = (String[]) questionsInfo.toArray();
+                    Main.loadTabs(username, userScoreInfo, questionsInfoArray);
+                } else {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("data/" + loginUsername.getText() + ".codart"));
+                    writer.write(loginUsername.getText() + "\n");
+                    writer.newLine();
+                    for(int i = 0; i < 9; i++) {
+                        writer.write("0");
+                        writer.newLine();
+                    }
+                    writer.close();
+                    writer = new BufferedWriter(new FileWriter("data/" + loginUsername.getText() + "_questions.codart"));
+                    String questionDetails = "e 1 NS " + System.nanoTime();
+                    writer.write(questionDetails + "\n");
+                    writer.close();
+                    Main.loadTabs(loginUsername.getText(), new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}, new String[]{questionDetails});
+                }
+                return;
+            }
+        }
+        //Show invalid auth credentials snackbar here
     }
 
     @Override
@@ -48,7 +89,7 @@ public class LoginController implements Initializable{
         try {
             bufferedImage = ImageIO.read(new File("images/codart.png"));
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            login_logo.setImage(image);
+            loginLogo.setImage(image);
         } catch (IOException e) {
             e.printStackTrace();
         }

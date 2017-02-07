@@ -11,12 +11,12 @@
 
 <VBox fx:id="loginPanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="default-primary-color" stylesheets="@../main/mainStyle.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
    <children>
-      <ImageView fx:id="login_logo" fitHeight="187.0" fitWidth="473.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loginLogo" fitHeight="187.0" fitWidth="473.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image backgroundLoading="true" url="@../../images/codart.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="login_username" focusColor="#4d4d4d" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" promptText="Username">
+      <JFXTextField fx:id="loginUsername" focusColor="#4d4d4d" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" promptText="Username">
          <VBox.margin>
             <Insets top="40.0" />
          </VBox.margin>
@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="login_password" focusColor="#4d4d4d" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" promptText="Password">
+      <JFXPasswordField fx:id="loginPassword" focusColor="#4d4d4d" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" promptText="Password">
          <opaqueInsets>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </opaqueInsets>
@@ -35,7 +35,7 @@
             <Font size="14.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton fx:id="login_register_button" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#registerButtonClicked" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK" styleClass="button-raised" stylesheets="@../main/mainStyle.css" text="&gt;" textAlignment="CENTER">
+      <JFXButton fx:id="loginRegisterButton" alignment="TOP_CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#registerButtonClicked" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK" styleClass="button-raised" stylesheets="@../main/mainStyle.css" text="&gt;" textAlignment="CENTER">
          <VBox.margin>
             <Insets left="260.0" top="20.0" />
          </VBox.margin>
