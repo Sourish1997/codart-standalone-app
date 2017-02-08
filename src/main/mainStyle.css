@@ -8,20 +8,21 @@
  .divider-color         { -fx-border-color: #BDBDBD; }
  .white-color           { -fx-background-color: #FFFFFF}
 
+  /*Labels*/
   .bold-label{
       -fx-font-weight: bold
   }
 
   .large-label{
        -fx-font-size: 16;
-   }
+  }
 
-   .bold-large-label{
+  .bold-large-label{
           -fx-font-weight: bold;
           -fx-font-size: 16;
-     }
+  }
 
- /*Button*/
+ /*Buttons*/
  .button-raised{
      -fx-padding: 0.7em 0.57em;
      -fx-font-size: 14 px;
@@ -38,6 +39,14 @@
       -fx-background-color: #e53935;
       -fx-text-fill: WHITE;
       -fx-background-radius: 40
+  }
+
+ .red-rect-button-raised{
+        -fx-font-size: 14 px;
+        -fx-button-type: RAISED;
+        -fx-background-color: #E53935;
+        -fx-text-fill: WHITE;
+        -fx-font-weight: bold
   }
 
   .yellow-button-flat{
@@ -165,7 +174,6 @@
 
 
  /*Questions List View (Card View)*/
-
  .q-list-view {
  	-fx-background-insets: 0;
    	-jfx-cell-horizontal-margin: 0;

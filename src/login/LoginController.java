@@ -76,6 +76,23 @@ public class LoginController implements Initializable{
                     writer.write(questionDetails + "\n");
                     writer.close();
                     Main.loadTabs(loginUsername.getText(), new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}, new String[]{questionDetails});
+                    reader = new BufferedReader(new FileReader("data/noq.codart"));
+                    int qNos[] = new int[3];
+                    qNos[0] = Integer.parseInt(reader.readLine());
+                    qNos[1] = Integer.parseInt(reader.readLine());
+                    qNos[2] = Integer.parseInt(reader.readLine());
+                    reader.close();
+                    writer = new BufferedWriter(new FileWriter("data/" + loginUsername.getText() + "_qdata.codart"));
+                    for(int i = 0; i < 3; i++) {
+                        for(int j = 0; j < qNos[i]; j++) {
+                            if(j == (qNos[i] - 1)) {
+                                writer.write("F");
+                                writer.newLine();
+                            } else
+                                writer.write("F ");
+                        }
+                    }
+                    writer.close();
                 }
                 return;
             }

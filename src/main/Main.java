@@ -11,7 +11,7 @@ import question.QuestionController;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static Stage pStage;
+    public static Stage pStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
