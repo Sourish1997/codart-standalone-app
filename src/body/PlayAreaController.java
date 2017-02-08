@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import main.Main;
 
 import javax.xml.soap.SOAPPart;
 import java.io.BufferedReader;
@@ -38,8 +39,10 @@ public class PlayAreaController implements Initializable{
     HamburgerSlideCloseTransition transition;
     FXMLLoader loader;
 
-    ArrayList<Label> listLabels = new ArrayList<>();
-    ArrayList<String> questionsData = new ArrayList<>();
+    private ArrayList<Label> listLabels = new ArrayList<>();
+    private ArrayList<String> questionsData = new ArrayList<>();
+
+    private String username;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,7 +77,16 @@ public class PlayAreaController implements Initializable{
             drawer.close();
     }
 
+    @FXML
+    void onQuestionSelected(MouseEvent event) throws Exception {
+        int questionIndex = questionsList.getSelectionModel().getSelectedIndex();
+        String questionData[] = questionsData.get(questionIndex).split(" ");
+        Main.loadQuestion(username, questionData, questionIndex);
+    }
+
     public void initVariables(String username, int[] userData, String[] questionsData) throws Exception{
+        this.username = username;
+
         DrawerContentController controller = loader.<DrawerContentController>getController();
         controller.initVariables(username, userData);
 
@@ -82,17 +94,21 @@ public class PlayAreaController implements Initializable{
             String[] qData = questionsData[i].split(" ");
             this.questionsData.add(questionsData[i]);
             String difficulty = qData[0];
+            String diffName;
+            if(difficulty.equals("e"))
+                diffName = "Easy: ";
+            else if(difficulty.equals("m"))
+                diffName = "Medium: ";
+            else
+                diffName = "Hard: ";
             int qNo = Integer.parseInt(qData[1]);
             int counter = 1;
             String line;
             BufferedReader reader = new BufferedReader(new FileReader("data/" + difficulty + ".codart"));
             while ((line = reader.readLine()) != null) {
                 if(qNo == counter) {
-                    listLabels.add(new Label(line));
+                    listLabels.add(new Label("Question " + (i + 1) + ": " + diffName + line));
                     listLabels.get(i).getStyleClass().add("large-label");
-                    listLabels.get(i).setOnMouseClicked(e -> {
-
-                    });
                     reader.close();
                     break;
                 }

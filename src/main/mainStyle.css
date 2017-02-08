@@ -164,7 +164,17 @@
 
 
 
+ /*Questions List View (Card View)*/
 
+ .q-list-view {
+ 	-fx-background-insets: 0;
+   	-jfx-cell-horizontal-margin: 0;
+   	-jfx-cell-vertical-margin: 0;
+   	-jfx-vertical-gap : 0;
+   	-fx-background-color: #F4F4F4;
+  }
+
+ /*The track for the horizontal and vertical scrollbars*/
  .q-list-view .scroll-bar:horizontal .track,
  .q-list-view .scroll-bar:vertical .track{
  	-fx-background-color:transparent;
