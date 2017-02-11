@@ -10,13 +10,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import main.Main;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-//TODO: Clean Up This Class
 public class QuestionController {
 
     @FXML
@@ -47,7 +47,7 @@ public class QuestionController {
     private Long startTime;
     private Thread timerThread;
     private String difficulty;
-    private boolean exit = false;
+    private boolean exit = false, transactionCalled = false;
     private int index, qNo;
 
     @FXML
@@ -76,17 +76,26 @@ public class QuestionController {
         dialog.setOverlayClose(false);
         dialog.show();
 
+        questionSolved.setDisable(true);
+        questionForfeited.setDisable(true);
+
         yesButton.setOnAction(e -> {
+            dialog.close();
             addNewQuestion(1);
         });
 
         noButton.setOnAction(e -> {
             dialog.close();
+            questionSolved.setDisable(false);
+            questionForfeited.setDisable(false);
         });
     }
 
     @FXML
     void onQuestionSolved(ActionEvent event) throws Exception {
+        questionSolved.setDisable(true);
+        questionForfeited.setDisable(true);
+        transactionCalled = true;
         addNewQuestion(2);
     }
 
@@ -196,9 +205,16 @@ public class QuestionController {
         JFXPasswordField pField = new JFXPasswordField();
         content.setBody(pField);
         JFXButton okButton = new JFXButton("Ok");
+        JFXButton cancelButton = new JFXButton("Cancel");
         okButton.getStylesheets().add("/main/mainStyle.css");
         okButton.getStyleClass().add("rect-button-raised");
-        content.setActions(okButton);
+        cancelButton.getStylesheets().add("/main/mainStyle.css");
+        cancelButton.getStyleClass().add("red-rect-button-raised");
+        pField.setFocusColor(Paint.valueOf("#4D4D4D"));
+
+        HBox hbox = new HBox(10);
+        hbox.getChildren().addAll(okButton, cancelButton);
+        content.setActions(hbox);
 
         JFXDialog  dialog = new JFXDialog(mainStack, content, JFXDialog.DialogTransition.CENTER);
         dialog.setOverlayClose(false);
@@ -267,11 +283,19 @@ public class QuestionController {
                     writer.newLine();
                     writer.close();
                     dialog.close();
+                    exit = true;
                     loadTabs();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
             }
+        });
+
+        cancelButton.setOnAction(e -> {
+            questionSolved.setDisable(false);
+            if(exit)
+                questionForfeited.setDisable(false);
+            dialog.close();
         });
 
         dialog.setOverlayClose(false);
@@ -361,7 +385,8 @@ public class QuestionController {
                while(!exit) {
                    Long seconds = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - startTime);
                    if(seconds > 30) {
-                       questionForfeited.setDisable(false);
+                       if(!transactionCalled)
+                           questionForfeited.setDisable(false);
                        Platform.runLater(
                                () -> {
                                    questionTimer.setText("00:00");
