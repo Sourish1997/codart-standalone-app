@@ -10,14 +10,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import main.Main;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+//TODO: Clean Up This Class
 public class QuestionController {
 
     @FXML
@@ -25,9 +24,6 @@ public class QuestionController {
 
     @FXML
     private JFXButton questionForfeited;
-
-    @FXML
-    private JFXButton questionBack;
 
     @FXML
     private Label questionType;

@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/fontawesomefx-8.7.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/JavaFX/jfoenix.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/jfoenix.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/JavaFX/fontawesomefx-8.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
