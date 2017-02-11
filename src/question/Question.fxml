@@ -23,7 +23,7 @@
          <right>
             <HBox prefHeight="44.0" prefWidth="148.0" BorderPane.alignment="CENTER">
                <children>
-                  <JFXButton fx:id="questionSolved" buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onSolvedClick" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK" styleClass="button-raised" text="✓" />
+                  <JFXButton fx:id="questionSolved" buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onQuestionSolved" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK" styleClass="button-raised" text="✓" />
                   <JFXButton fx:id="questionForfeited" buttonType="RAISED" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onQuestionForfeited" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK" styleClass="red-button-raised" text="X">
                      <HBox.margin>
                         <Insets left="10.0" />
