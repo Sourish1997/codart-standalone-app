@@ -32,7 +32,7 @@ public class Main extends Application {
         Parent root = loader.load();
         TabsController controller = loader.<TabsController>getController();
         controller.initVariables(username, userData, questionsData);
-        pStage.setScene(new Scene(root, 700, 650));
+        pStage.setScene(new Scene(root, pStage.getScene().getWidth(), pStage.getScene().getHeight()));
     }
 
     public static void loadQuestion(String username, String[] questionData, int questionIndex) throws Exception {
@@ -41,13 +41,13 @@ public class Main extends Application {
         Parent root = loader.load();
         QuestionController controller = loader.<QuestionController>getController();
         controller.initVariables(username, questionData, questionIndex);
-        pStage.setScene(new Scene(root, 700, 650));
+        pStage.setScene(new Scene(root, pStage.getScene().getWidth(), pStage.getScene().getHeight()));
     }
 
     public static void loadLogin() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/login/Login.fxml"));
         Parent root = loader.load();
-        pStage.setScene(new Scene(root, 700, 650));
+        pStage.setScene(new Scene(root, pStage.getScene().getWidth(), pStage.getScene().getHeight()));
     }
 }

@@ -59,8 +59,7 @@ public class QuestionController {
     @FXML
     void onQuestionForfeited(ActionEvent event) throws Exception {
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Label(""));
-        content.setBody(new Label("Are you sure you want to forfeit?"));
+        content.setHeading(new Label("Are you sure you want to forfeit?"));
         JFXButton yesButton = new JFXButton("Yes");
         JFXButton noButton = new JFXButton("No ");
         yesButton.getStylesheets().add("/main/mainStyle.css");
@@ -119,14 +118,13 @@ public class QuestionController {
         hard.setToggleGroup(group);
 
         VBox vbox = new VBox(10);
-        vbox.getChildren().add(new Label("Enter Difficulty of next question: "));
         vbox.getChildren().add(easy);
         vbox.getChildren().add(medium);
         vbox.getChildren().add(hard);
         vbox.setSpacing(10);
 
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Label(""));
+        content.setHeading(new Label("Enter Difficulty of next question: "));
         content.setBody(vbox);
         content.setActions(okButton);
 
