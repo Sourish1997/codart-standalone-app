@@ -28,7 +28,7 @@
                                          <Font name="System Bold" size="30.0" />
                                      </font>
                                  </Label>
-                                 <Label alignment="CENTER" contentDisplay="CENTER" text="This feature will be available in Codart 3.0. Stay tuned!." textFill="#5A5A5A">
+                                 <Label alignment="CENTER" contentDisplay="CENTER" text="This feature will be available in Codart 3.0. Stay tuned!" textFill="#5A5A5A">
                                      <font>
                                          <Font name="System Bold" size="12.0" />
                                      </font>

@@ -416,17 +416,18 @@ public class QuestionController {
         timerThread = new Thread(() -> {
                while(!exit) {
                    Long seconds = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - startTime);
-                   if(seconds > 30) {
+                   if(seconds > 600) {
                        if(!transactionCalled)
                            questionForfeited.setDisable(false);
                        Platform.runLater(
                                () -> {
+                                   questionTimer.setTextFill(Paint.valueOf("#FFFFFF"));
                                    questionTimer.setText("00:00");
                                }
                        );
                        exit = true;
                    } else {
-                       int secondsLeft = (int) (30 - seconds);
+                       int secondsLeft = (int) (600 - seconds);
                        String minutesLeft = (secondsLeft / 60) + "";
                        String remainderSeconds = (secondsLeft - (Integer.parseInt(minutesLeft) * 60)) + "";
                        if(minutesLeft.length() == 1)
@@ -450,9 +451,11 @@ public class QuestionController {
                }
         });
 
-        if(questionData[2].equals("NS"))
+        if(questionData[2].equals("NS")) {
+            questionTimer.setTextFill(Paint.valueOf("#D34336"));
             timerThread.start();
-        else {
+        } else {
+            questionTimer.setTextFill(Paint.valueOf("#FFFFFF"));
             questionSolved.setDisable(true);
             questionForfeited.setDisable(true);
             questionTimer.setText("    :    ");

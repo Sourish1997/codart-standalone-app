@@ -57,9 +57,9 @@
    </top>
    <center>
        <StackPane fx:id="mainStack">
-       <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="1000" prefWidth="1200.0" BorderPane.alignment="TOP_CENTER">
+       <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="1200.0" BorderPane.alignment="TOP_CENTER">
          <children>
-             <JFXListView fx:id="questionCard" maxWidth="1.7976931348623157E308" prefWidth="560.0" styleClass="q-list-view" stylesheets="@../main/mainStyle.css" VBox.vgrow="SOMETIMES">
+             <JFXListView fx:id="questionCard" maxWidth="1.7976931348623157E308" prefWidth="560.0" prefHeight="3000" styleClass="q-list-view" stylesheets="@../main/mainStyle.css" VBox.vgrow="SOMETIMES">
                  <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefWidth="800.0" BorderPane.alignment="TOP_CENTER">
                  <children>
                     <Label fx:id="questionTitle" text="Extreme Encoding" textFill="#4d4d4d">
@@ -70,7 +70,7 @@
                           <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                        </VBox.margin>
                     </Label>
-                    <Label fx:id="questionBody" alignment="TOP_LEFT" prefWidth="800.0" text="Lajuk’s hard-drive is almost full of presents and she barely has any space to keep the arrays. She discovered a brilliant function to merge the array into one:int encodeInteger(int x, int n){n = n&lt;&lt;(1&lt;&lt;(1&lt;&lt;(1&lt;&lt;1)));x = x | n;return x;}void encodeArray(int *A, int *B, int n){for(int i=0;i&lt;n;i++) {        A[i] = encodeInteger(A[i], B[i]);}}Lajuk passed A and B into the encodeArray function. After that she discarded array B and saved the modified version of array A in the hard-drive.Now in her 15th birthday Lajuk wants to play with those arrays again. She found the modified version of array A in the hard-drive but she forgot how to recover the original arrays from it. Being upset, she asked for your help. Can you help her to recover the original arrays?InputThe first line contains T (1 ≤ T ≤ 100), the number of test cases. The first line of each test cases contains n (1 ≤ n ≤ 104), the size of the array. Next n line contains n integers denoting the modified array A.OutputFor each case print the case number in the first line. In the second line, print n integers denoting the original array A. In the third line print n integers denoting the array B. Two consecutive integers should be separated by a single space.SampleInput14196613655370196620131079OutputCase 1:5 10 12 73 10 3 2" textFill="#4d4d4d" wrapText="true" VBox.vgrow="ALWAYS">
+                    <Label fx:id="questionBody" alignment="TOP_LEFT" prefWidth="800.0" prefHeight="1500" text="Hello World!" textFill="#4d4d4d" wrapText="true" VBox.vgrow="ALWAYS">
                        <VBox.margin>
                           <Insets bottom="10.0" left="20.0" right="20.0" />
                        </VBox.margin>

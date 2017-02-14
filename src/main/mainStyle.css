@@ -206,7 +206,7 @@
 
 
 
- /*Questions List View (Card View)*/
+/*Questions List View (Card View)*/
  .q-list-view {
  	-fx-background-insets: 0;
    	-jfx-cell-horizontal-margin: 0;
@@ -217,7 +217,9 @@
 
  /*The track for the horizontal and vertical scrollbars*/
  .q-list-view .scroll-bar:horizontal .track,
- .q-list-view .scroll-bar:vertical .track{
+ .q-list-view .scroll-bar:vertical .track,
+ .custom-jfx-list-view .scroll-bar:horizontal .track,
+ .custom-jfx-list-view .scroll-bar:vertical .track {
  	-fx-background-color:transparent;
  	-fx-border-color:transparent;
  	-fx-background-radius: 0em;
@@ -226,7 +228,9 @@
 
  /* The increment and decrement button CSS class of scrollbar */
  .q-list-view .scroll-bar:horizontal .increment-button ,
- .q-list-view .scroll-bar:horizontal .decrement-button {
+ .q-list-view .scroll-bar:horizontal .decrement-button ,
+ .custom-jfx-list-view .scroll-bar:horizontal .increment-button ,
+ .custom-jfx-list-view .scroll-bar:horizontal .decrement-button {
      -fx-background-color:transparent;
  	-fx-background-radius: 0em;
  	-fx-padding:0 0 10 0;
@@ -234,22 +238,27 @@
 
  /* The increment and decrement button CSS class of scrollbar */
  .q-list-view .scroll-bar:vertical .increment-button ,
- .q-list-view .scroll-bar:vertical .decrement-button {
+ .q-list-view .scroll-bar:vertical .decrement-button ,
+ .custom-jfx-list-view .scroll-bar:vertical .increment-button ,
+ .custom-jfx-list-view .scroll-bar:vertical .decrement-button {
      -fx-background-color:transparent;
  	-fx-background-radius: 0em;
  	-fx-padding:0 10 0 0;
-
  }
 
  .q-list-view  .scroll-bar .increment-arrow,
- .q-list-view  .scroll-bar .decrement-arrow{
+ .q-list-view  .scroll-bar .decrement-arrow,
+ .custom-jfx-list-view  .scroll-bar .increment-arrow,
+ .custom-jfx-list-view  .scroll-bar .decrement-arrow {
  	-fx-shape:" ";
  	-fx-padding:0;
  }
 
  /* The main scrollbar **thumb** CSS class which we drag every time (movable) */
  .q-list-view .scroll-bar:horizontal .thumb,
- .q-list-view .scroll-bar:vertical .thumb {
+ .q-list-view .scroll-bar:vertical .thumb ,
+ .custom-jfx-list-view .scroll-bar:horizontal .thumb,
+ .custom-jfx-list-view .scroll-bar:vertical .thumb{
     -fx-background-color: derive(#009688, 50%);
  	-fx-background-insets: 2, 0, 0;
  	-fx-background-radius: 2em;
