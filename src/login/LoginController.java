@@ -2,17 +2,26 @@ package login;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import main.Main;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
@@ -44,9 +53,12 @@ public class LoginController implements Initializable{
         BufferedReader reader = new BufferedReader(new FileReader("data/auth.codart"));
         while ((userAndPass = reader.readLine()) != null) {
             authArray = userAndPass.split(" ");
+
             if(authArray[0].equals(loginUsername.getText()) && authArray[1].equals(loginPassword.getText())) {
                 reader.close();
+
                 File userData = new File("data/" + loginUsername.getText() + ".codart");
+
                 if(userData.exists()) {
                     reader = new BufferedReader(new FileReader("data/" + loginUsername.getText() + ".codart"));
                     String username = reader.readLine();
@@ -97,7 +109,8 @@ public class LoginController implements Initializable{
                 return;
             }
         }
-        //Show invalid auth credentials snackbar here
+        JFXSnackbar bar = new JFXSnackbar(loginPanel);
+        bar.show("Invalid Username or Password!", 1500);
     }
 
     @Override

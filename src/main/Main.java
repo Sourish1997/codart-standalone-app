@@ -14,7 +14,7 @@ public class Main extends Application {
     public static Stage pStage;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         pStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/login/Login.fxml"));
         pStage.setTitle("Codart");

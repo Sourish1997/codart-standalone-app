@@ -1,6 +1,9 @@
 package question;
 
 import com.jfoenix.controls.*;
+import com.jfoenix.validation.RequiredFieldValidator;
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import main.Main;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -124,7 +128,7 @@ public class QuestionController {
         vbox.setSpacing(10);
 
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Label("Enter Difficulty of next question: "));
+        content.setHeading(new Label("Select Difficulty of next question: "));
         content.setBody(vbox);
         content.setActions(okButton);
 
@@ -169,23 +173,48 @@ public class QuestionController {
                 int found = -1;
                 for (int i = no; i < newQuestionContainer.length; i++) {
                     if (newQuestionContainer[i].equals("F")) {
-                        found = i;
-                        break;
-                    }
-                }
-
-                if (found == -1) {
-                    for (int i = 0; i < no; i++) {
-                        if (newQuestionContainer[i].equals("F")) {
+                        if(!(selected.equals(difficulty) && i == (qNo - 1))) {
                             found = i;
                             break;
                         }
                     }
                 }
 
+                if (found == -1) {
+                    for (int i = 0; i < no; i++) {
+                        if (newQuestionContainer[i].equals("F")) {
+                            if(!(selected.equals(difficulty) && i == (qNo - 1))) {
+                                found = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 if(found == -1) {
-                    //TODO: display snackbar here
-                    dialog.close();
+                    JFXButton okButton2 = new JFXButton("Ok");
+                    okButton2.getStylesheets().add("/main/mainStyle.css");
+                    okButton2.getStyleClass().add("rect-button-raised");
+
+                    String diffName;
+                    if(selected.equals("e"))
+                        diffName = "easy";
+                    else if(selected.equals("m"))
+                        diffName = "medium";
+                    else
+                        diffName = "hard";
+
+                    JFXDialogLayout content2 = new JFXDialogLayout();
+                    content2.setHeading(new Label("No more " + diffName + " questions available! Please select another difficulty..."));
+                    content2.setActions(okButton2);
+
+                    JFXDialog  dialog2 = new JFXDialog(mainStack, content2, JFXDialog.DialogTransition.CENTER);
+                    dialog2.setOverlayClose(false);
+                    dialog2.show();
+
+                    okButton2.setOnAction(e -> {
+                        dialog2.close();
+                    });
                 } else {
                     dialog.close();
                     confirmTransaction(selected, found, callId);
@@ -199,6 +228,7 @@ public class QuestionController {
 
     public void confirmTransaction(String selected, int found, int callId) {
         JFXDialogLayout content = new JFXDialogLayout();
+        content.getStylesheets().add("/main/mainStyle.css");
         content.setHeading(new Label("Enter Verification: "));
         JFXPasswordField pField = new JFXPasswordField();
         content.setBody(pField);
@@ -286,6 +316,10 @@ public class QuestionController {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
+            } else {
+                pField.setUnFocusColor(Paint.valueOf("#D34336"));
+                pField.setFocusColor(Paint.valueOf("#D34336"));
+                pField.requestFocus();
             }
         });
 

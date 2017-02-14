@@ -2,7 +2,7 @@
  .default-primary-color { -fx-background-color: #FFEB3B; }
  .light-primary-color   { -fx-background-color: #FFF9C4; }
  .text-primary-color    { -fx-color: #212121; }
- .accent-color          { -fx-background-color: #536DFE; }
+ .accent-color          { -fx-background-color: #009688; }
  .primary-text-color    { -fx-color: #212121; }
  .secondary-text-color  { -fx-color: #757575; }
  .divider-color         { -fx-border-color: #BDBDBD; }
@@ -20,6 +20,40 @@
   .bold-large-label{
           -fx-font-weight: bold;
           -fx-font-size: 16;
+  }
+
+  /*Text Field*/
+
+  .glyph-icon {
+      -fx-fill: #D34336;
+  }
+
+  .jfx-text-field:error, .jfx-password-field:error {
+  	-jfx-focus-color: #D34336;
+  	-jfx-unfocus-color: #D34336;
+  }
+
+  .jfx-text-field .error-label, .jfx-password-field .error-label {
+  	-fx-text-fill : #D34336;
+  	-fx-font-size: 0.75em;
+  }
+
+  /*Snackbar*/
+  .jfx-snackbar-content {
+  	-fx-background-color: #FFEB3B;
+  }
+
+  .jfx-snackbar-transparent-content {
+    -fx-background-color: TRANSPARENT;
+  }
+
+  .jfx-snackbar-toast {
+  	-fx-text-fill: #D34336;
+  	-fx-font-weight: bold
+  }
+
+  .jfx-snackbar-action {
+  	-fx-text-fill: #ff4081;
   }
 
  /*Buttons*/
