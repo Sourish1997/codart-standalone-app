@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.BorderPane?>
-
-
-<BorderPane fx:id="leaderboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" />
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<StackPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="body.LeaderboardController">
+   <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="1000" prefWidth="1200.0">
+      <children>
+         <JFXListView fx:id="leaderCard" maxWidth="1.7976931348623157E308" prefWidth="400" prefHeight="500" styleClass="q-list-view" stylesheets="@../main/mainStyle.css" VBox.vgrow="ALWAYS">
+             <BorderPane>
+                     <center>
+                         <VBox fx:id="leaderMessage" alignment="CENTER" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0">
+                             <children>
+                                 <ImageView fx:id="constrLogo" fitHeight="187.0" fitWidth="473.0" pickOnBounds="true" preserveRatio="true">
+                                     <image>
+                                         <Image backgroundLoading="true" url="@../../images/codart.png" />
+                                     </image>
+                                 </ImageView>
+                                 <Label alignment="CENTER" contentDisplay="CENTER" text="UNDER CONSTUCTION!" textFill="#5A5A5A">
+                                     <font>
+                                         <Font name="System Bold" size="30.0" />
+                                     </font>
+                                 </Label>
+                                 <Label alignment="CENTER" contentDisplay="CENTER" text="This feature will be available in Codart 3.0. Stay tuned!." textFill="#5A5A5A">
+                                     <font>
+                                         <Font name="System Bold" size="12.0" />
+                                     </font>
+                                 </Label>
+                             </children>
+                         </VBox>
+                 </center>
+             </BorderPane>
+         </JFXListView>
+      </children>
+      <StackPane.margin>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      </StackPane.margin>
+   </VBox>
+</StackPane>
