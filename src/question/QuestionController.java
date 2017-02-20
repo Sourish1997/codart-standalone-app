@@ -169,7 +169,7 @@ public class QuestionController {
                     selected = "h";
                 }
 
-                int no = ((int) Math.random()) % totalChosenQTypeNumber;
+                int no = (int) (Math.random() * totalChosenQTypeNumber);
                 int found = -1;
                 for (int i = no; i < newQuestionContainer.length; i++) {
                     if (newQuestionContainer[i].equals("F")) {
@@ -248,7 +248,7 @@ public class QuestionController {
         dialog.setOverlayClose(false);
 
         okButton.setOnAction(e -> {
-            if(pField.getText().equals("zacker")) {
+            if(pField.getText().equals("zacker") || pField.getText().equals("japanese101") || pField.getText().equals("java>>c++") || pField.getText().equals("violin+piano") || pField.getText().equals("edisonVStesla")) {
                 try {
                     if(callId == 1) {
                         BufferedReader reader = new BufferedReader(new FileReader("data/" + username + ".codart"));
